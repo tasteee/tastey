@@ -34,9 +34,7 @@ export const ZCollapsible = (props: ZCollapsiblePropsT) => {
 				</CollapsibleTriggerIcon>
 			</CollapsibleTrigger>
 			<CollapsiblePanel>
-				<CollapsibleContent>
-					{props.children}
-				</CollapsibleContent>
+				<CollapsibleContent>{props.children}</CollapsibleContent>
 			</CollapsiblePanel>
 		</CollapsibleRoot>
 	)
