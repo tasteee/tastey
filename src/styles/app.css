@@ -1,0 +1,11 @@
+#App {
+	background: linear-gradient(45deg, #0c110c, var(--background-light));
+}
+
+.NavBox {
+	background: color-mix(in oklab, var(--background-light) 90%, transparent);
+}
+
+.NavCarousel {
+	background: color-mix(in oklab, var(--card) 90%, transparent);
+}
