@@ -8,6 +8,7 @@ import { SettingsDialog } from './components/settings-dialog'
 import { Route, Router, Switch } from 'wouter'
 import { DocsPage } from './pages/docs'
 import { NotFoundPage } from './pages/not-found'
+import { Browse } from './pages/browse'
 
 const AppBox = styled.div('AppBox', 'relative flex-1 flex pt-16')
 
@@ -19,9 +20,7 @@ export const App = () => {
 				<main className='flex-1 flex overflow-y-scroll'>
 					<Router>
 						<Switch>
-							<Route path='/browse*'>
-								<h1>Browse Page</h1>
-							</Route>
+							<Route path='/browse*' component={Browse} />
 							<Route path='/lists*'>
 								<h1>Lists Page</h1>
 							</Route>

@@ -27,11 +27,11 @@
 // all assets from those folders from the app's library.
 // When indexing, the app will try to make sure there are no duplicates added to the library.
 
-export type AssetTypeT = "sample" | "midi";
+type AssetTypeT = "sample" | "midi";
 
-export type FileTypeT = "wav" | "mp3" | "mid" | "midi";
+type FileTypeT = "wav" | "mp3" | "mid" | "midi";
 
-export type AssetSortFieldT =
+type AssetSortFieldT =
   | "name"
   | "fileName"
   | "fileSize"
@@ -44,35 +44,35 @@ export type AssetSortFieldT =
   | "lastPlayedAt"
   | "playCount";
 
-export type SortDirectionT = "asc" | "desc";
+type SortDirectionT = "asc" | "desc";
 
-export type ListTypeT = "custom" | "favorites" | "disliked";
+type ListTypeT = "custom" | "favorites" | "disliked";
 
-export type MidiPlaybackModeT = "soundfont" | "midi-output";
+type MidiPlaybackModeT = "soundfont" | "midi-output";
 
-export type ToastTypeT = "info" | "success" | "warning" | "error";
+type ToastTypeT = "info" | "success" | "warning" | "error";
 
-export type IndexStatusT = "idle" | "indexing" | "complete" | "failed";
+type IndexStatusT = "idle" | "indexing" | "complete" | "failed";
 
-export type SamplePlaybackKindT = "loop" | "one-shot";
+type SamplePlaybackKindT = "loop" | "one-shot";
 
-export type NumberRangeT = {
+type NumberRangeT = {
   min?: number;
   max?: number;
 };
 
-export type DateRangeT = {
+type DateRangeT = {
   min?: string;
   max?: string;
 };
 
-export type BaseEntityT = {
+type BaseEntityT = {
   id: string;
   createdAt: string;
   updatedAt: string;
 };
 
-export type IndexedFolderT = BaseEntityT & {
+type IndexedFolderT = BaseEntityT & {
   path: string;
   name: string;
   isEnabled: boolean;
@@ -82,7 +82,7 @@ export type IndexedFolderT = BaseEntityT & {
   errorMessage?: string;
 };
 
-export type FileMetadataT = {
+type FileMetadataT = {
   fileName: string;
   filePath: string;
   fileType: FileTypeT;
@@ -93,14 +93,14 @@ export type FileMetadataT = {
   lastModifiedAt?: string;
 };
 
-export type AssetFlagsT = {
+type AssetFlagsT = {
   isFavorited: boolean;
   isDisliked: boolean;
   isHidden: boolean;
   isDuplicate: boolean;
 };
 
-export type AssetUsageT = {
+type AssetUsageT = {
   playCount: number;
   lastPlayedAt?: string;
   copiedAt?: string;
@@ -108,20 +108,20 @@ export type AssetUsageT = {
   dislikedAt?: string;
 };
 
-export type SampleAnalysisT = {
+type SampleAnalysisT = {
   durationMs?: number;
   bpm?: number;
   key?: string;
   playbackKind?: SamplePlaybackKindT;
 };
 
-export type MidiAnalysisT = {
+type MidiAnalysisT = {
   durationMs?: number;
   keys: string[];
   scales: string[];
 };
 
-export type AssetBaseT = BaseEntityT & {
+type AssetBaseT = BaseEntityT & {
   type: AssetTypeT;
   name: string;
   normalizedName: string;
@@ -134,25 +134,25 @@ export type AssetBaseT = BaseEntityT & {
   indexedAt: string;
 };
 
-export type SampleAssetT = AssetBaseT & {
+type SampleAssetT = AssetBaseT & {
   type: "sample";
   analysis: SampleAnalysisT;
 };
 
-export type MidiAssetT = AssetBaseT & {
+type MidiAssetT = AssetBaseT & {
   type: "midi";
   analysis: MidiAnalysisT;
 };
 
-export type AssetT = SampleAssetT | MidiAssetT;
+type AssetT = SampleAssetT | MidiAssetT;
 
-export type AssetListT = BaseEntityT & {
+type AssetListT = BaseEntityT & {
   type: ListTypeT;
   name: string;
   assetIds: string[];
 };
 
-export type AssetFilterT = {
+type AssetFilterT = {
   query?: string;
   types?: AssetTypeT[];
   fileTypes?: FileTypeT[];
@@ -170,24 +170,24 @@ export type AssetFilterT = {
   folderIds?: string[];
 };
 
-export type AssetSortT = {
+type AssetSortT = {
   field: AssetSortFieldT;
   direction: SortDirectionT;
 };
 
-export type LibrarySelectionT = {
+type LibrarySelectionT = {
   activeAssetId?: string;
   selectedAssetIds: string[];
   activeListId?: string;
 };
 
-export type LibraryViewT = {
+type LibraryViewT = {
   selection: LibrarySelectionT;
   filter: AssetFilterT;
   sort: AssetSortT;
 };
 
-export type PlaybackStateT = {
+type PlaybackStateT = {
   activeAssetId?: string;
   queueAssetIds: string[];
   isPlaying: boolean;
@@ -196,24 +196,24 @@ export type PlaybackStateT = {
   autoPlayOnSelection: boolean;
 };
 
-export type MidiSettingsT = {
+type MidiSettingsT = {
   playbackMode: MidiPlaybackModeT;
   soundFontPath?: string;
   midiOutputId?: string;
 };
 
-export type AppPreferencesT = {
+type AppPreferencesT = {
   outputVolume: number;
   autoPlayOnArrowNavigation: boolean;
   midi: MidiSettingsT;
 };
 
-export type ToastActionT = {
+type ToastActionT = {
   label: string;
   actionId: string;
 };
 
-export type ToastT = {
+type ToastT = {
   id: string;
   type: ToastTypeT;
   title?: string;
@@ -224,7 +224,7 @@ export type ToastT = {
   actions?: ToastActionT[];
 };
 
-export type IndexJobT = BaseEntityT & {
+type IndexJobT = BaseEntityT & {
   folderId: string;
   status: IndexStatusT;
   scannedFileCount: number;
@@ -236,7 +236,7 @@ export type IndexJobT = BaseEntityT & {
   finishedAt?: string;
 };
 
-export type AppStateT = {
+type AppStateT = {
   assetsById: Record<string, AssetT>;
   assetIds: string[];
 

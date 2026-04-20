@@ -1,5 +1,4 @@
 import { getTestId } from '#/helpers/get-test-id'
-import React from 'react'
 
 type ZBadgeColorT = 'gray' | 'white' | 'pink' | 'purple' | 'orange' | 'red'
 

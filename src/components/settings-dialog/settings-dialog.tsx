@@ -4,10 +4,8 @@ import { XIcon } from 'lucide-react'
 import { styled } from '#/modules/tw-styled'
 import { $settings } from '#/stores/settings'
 import { Dialog, DialogPopup, DialogTitle } from '#/components/ui/dialog'
-import { Button } from '#/components/ui/button'
 import { useDatass } from 'datass'
-
-type ActiveSectionT = 'library' | 'preferences'
+import { ZButton } from '#/components/button'
 
 const SettingsDialogLayout = styled.div('SettingsDialogLayout', 'flex flex-1 min-h-0 overflow-hidden rounded-[inherit]')
 const SettingsDialogSidebar = styled.aside('SettingsDialogSidebar', 'w-[13rem] shrink-0 [border-right:1px_solid_var(--border)] p-[var(--space-lg)] flex flex-col gap-[var(--space-md)]')
@@ -45,7 +43,7 @@ export const SettingsDialog = () => {
 		const isAlreadyAdded = currentFolders.includes(trimmedPath)
 		if (isAlreadyAdded) return
 
-		$settings.folders.set.append(trimmedPath)
+		$settings.folders.set.append(trimmedPath as never)
 		newFolderPath.set('')
 	}
 
@@ -104,9 +102,9 @@ export const SettingsDialog = () => {
 					<SettingsDialogBody>
 						<SettingsDialogBodyHeader>
 							<SettingsDialogBodyTitle>{isLibraryActive ? 'Library' : 'Preferences'}</SettingsDialogBodyTitle>
-							<Button variant='ghost' size='icon' onClick={handleClose} aria-label='Close settings'>
+							<ZButton kind='ghost' size='icon' onClick={handleClose} aria-label='Close settings'>
 								<XIcon />
-							</Button>
+							</ZButton>
 						</SettingsDialogBodyHeader>
 						<SettingsDialogBodyContent>
 							{isPreferencesActive && <SettingsDialogSectionDescription>Customize the application behavior and appearance.</SettingsDialogSectionDescription>}
@@ -122,9 +120,9 @@ export const SettingsDialog = () => {
 											<SettingsDialogFolderItem key={folderPath}>
 												<FolderSimpleIcon className='shrink-0 text-muted-foreground' size={16} />
 												<SettingsDialogFolderPath>{folderPath}</SettingsDialogFolderPath>
-												<Button variant='ghost' size='icon-sm' onClick={handleRemoveClick} aria-label='Remove folder'>
+												<ZButton kind='ghost' size='icon' onClick={handleRemoveClick} aria-label='Remove folder'>
 													<TrashIcon />
-												</Button>
+												</ZButton>
 											</SettingsDialogFolderItem>
 										)
 									})}
@@ -133,10 +131,10 @@ export const SettingsDialog = () => {
 							{isLibraryActive && (
 								<SettingsDialogAddFolder>
 									<SettingsDialogInput type='text' placeholder='Paste or type a folder path...' value={newFolderPath.state} onChange={handleInputChange} onKeyDown={handleInputKeyDown} />
-									<Button size='sm' onClick={handleAddFolder}>
+									<ZButton size='small' onClick={handleAddFolder}>
 										<PlusIcon />
 										Add Folder
-									</Button>
+									</ZButton>
 								</SettingsDialogAddFolder>
 							)}
 						</SettingsDialogBodyContent>

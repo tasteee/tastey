@@ -1,8 +1,8 @@
 import { NavLink } from './nav-link'
 import { GearSixIcon } from '@phosphor-icons/react'
 import { styled } from '#/modules/tw-styled'
-import { Button } from '#/components/ui/button'
 import { $settings } from '#/stores/settings'
+import { ZButton } from '../button'
 
 const LeftBox = styled.div('LeftBox', 'flex items-center gap-3')
 const RightBox = styled.div('RightBox', 'flex items-center gap-2')
@@ -28,9 +28,9 @@ export const NavBar = () => {
 					<NavLink label='Docs' path='/docs' />
 				</MiddleBox>
 				<RightBox>
-					<Button variant='ghost' size='icon' onClick={handleSettingsClick} aria-label='Settings' className='hover:bg-transparent hover:text-white text-muted-foreground'>
+					<ZButton kind='ghost' size='icon' onClick={handleSettingsClick} aria-label='Settings' className='hover:bg-transparent hover:text-white text-muted-foreground'>
 						<GearSixIcon size={20} />
-					</Button>
+					</ZButton>
 				</RightBox>
 			</InnerNavBox>
 		</NavBox>
